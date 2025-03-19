@@ -60,6 +60,38 @@ run_app() {
     fi
 }
 
+stop_app() {
+    print_message "$BLUE" "🛑" "Stopping running application..."
+    pkill -f "java -jar target/$JAR_NAME" || true
+}
+
+watch_and_reload() {
+    local last_hash=""
+    
+    while true; do
+        current_hash=$(find src -type f -name "*.java" -exec md5sum {} \; | sort | md5sum)
+        
+        if [ "$current_hash" != "$last_hash" ]; then
+            if [ ! -z "$last_hash" ]; then
+                print_message "$YELLOW" "🔄" "Changes detected, rebuilding..."
+                stop_app
+                build_app
+                run_app &
+            fi
+            last_hash=$current_hash
+        fi
+        
+        sleep 2
+    done
+}
+
+run_app_dev() {
+    print_message "$BLUE" "🔄" "Starting application in development mode with file watching..."
+    build_app
+    run_app &
+    watch_and_reload
+}
+
 main() {
     print_message "$YELLOW" "🚀" "______________ Welcome to RIOS build script! ______________"
     print_message "$YELLOW" "⚡️" "Author: Aditya Patange (AdiPat)"
@@ -71,8 +103,10 @@ main() {
     
     if [ "$1" == "--run" ]; then
         run_app
+    elif [ "$1" == "--refresh" ]; then
+        run_app_dev
     else
-        print_message "$GREEN" "📦" "Build completed! Use --run to start the application"
+        print_message "$GREEN" "📦" "Build completed! Use --run to start the application or --refresh for development mode"
     fi
 }
 
