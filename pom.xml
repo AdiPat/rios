@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.5</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>org.thehackersplaybook.rios</groupId>
+	<artifactId>rios</artifactId>
+	<version>0.0.1-ALPHA</version>
+	<name>rios-api</name>
+	<description>RIOS, or Resume Intelligence Orchestration System is a Spring Boot API designed to enhance hiring workflows by 10x.</description>
+	<url>https://github.com/thehackersplaybook/rios</url>
+	<licenses>
+		<license>
+			<name>GNU Affero General Public License v3.0</name>
+			<url>https://www.gnu.org/licenses/agpl-3.0.html</url>
+			<distribution>repo</distribution>
+			<comments>AGPLv3 license for open-source distribution.</comments>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>adipat</id>
+			<name>Aditya Patange</name>
+			<email>contact.adityapatange@gmail.com</email>
+			<roles>
+				<role>Knowledge Engineer</role>
+				<role>Senior Software Engineer</role>
+			</roles>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/thehackersplaybook/rios.git</connection>
+		<developerConnection>scm:git:ssh://github.com:thehackersplaybook/rios.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/thehackersplaybook/rios</url>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+		<maven.compiler.release>21</maven.compiler.release>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<release>21</release>
+					<compilerArgs>
+						<arg>--enable-preview</arg>
+					</compilerArgs>
+					<source>21</source>
+					<target>21</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
